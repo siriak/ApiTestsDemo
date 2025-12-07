@@ -1,14 +1,22 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using Api;
 
-namespace Api
-{
-    public class Program
-    {
-        public static void Main(string[] args) => CreateHostBuilder(args).Build().Run();
+var builder = WebApplication.CreateBuilder(args);
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
-    }
-}
+// Add services to the container
+builder.Services.AddControllers();
+builder.Services.AddSingleton<PeopleService>();
+builder.Services
+    .AddAuthentication()
+    .AddJwtBearer();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline
+app.UseRouting();
+app.UseAuthorization();
+app.MapControllers();
+
+app.Run();
+
+// Make the implicit Program class public for tests
+public partial class Program { }

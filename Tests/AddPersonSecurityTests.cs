@@ -1,6 +1,5 @@
-using System;
 using System.Net;
-using System.Threading.Tasks;
+using Api;
 using FluentAssertions;
 using NUnit.Framework;
 using Refit;
