@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Api;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -10,7 +9,7 @@ namespace Tests
     public class PersonFlowTests : ApiTestBase
     {
         private int PersonId { get; set; }
-        private AddPersonCommand AddPersonCommand { get; set; }
+        private AddPersonCommand AddPersonCommand { get; set; } = null!;
 
         [Test]
         [Order(1)]

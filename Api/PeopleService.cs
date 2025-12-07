@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 
 namespace Api
 {
@@ -28,6 +25,6 @@ namespace Api
             return person.Id;
         }
 
-        public Person Get(GetPersonRequest request) => People.FirstOrDefault(p => p.Id == request.Id);
+        public Person? Get(GetPersonRequest request) => People.FirstOrDefault(p => p.Id == request.Id);
     }
 }
